@@ -4,10 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<<<<<<< HEAD
 <title>FCI SN Login</title>
 </head>
 <body>
 <h1><center>Login To Our FCI Social Network</center></h1>
+=======
+<title>Insert title here</title>
+</head>
+<body>
+>>>>>>> 93d379e49e7e6d965ecc4a4c763696b8990162e4
 <form action="/social/home" method="post">
   Name : <input type="text" name="uname" /> <br>
   Password : <input type="password" name="password" /> <br>

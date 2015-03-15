@@ -25,8 +25,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+<<<<<<< HEAD
 import com.FCI.SWE.Models.User;
 import com.FCI.SWE.ServicesModels.UserEntity;
+=======
+import com.FCI.SWE.Models.UserEntity;
+>>>>>>> 93d379e49e7e6d965ecc4a4c763696b8990162e4
 
 /**
  * This class contains REST services, also contains action function for web
@@ -53,6 +57,7 @@ public class UserController {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Action function to logout by setting the active user to null using url
 	 * like this /rest/logout
 	 * 
@@ -66,6 +71,8 @@ public class UserController {
 	}
 
 	/**
+=======
+>>>>>>> 93d379e49e7e6d965ecc4a4c763696b8990162e4
 	 * Action function to render home page of application, home page contains
 	 * only signup and login buttons
 	 * 
@@ -107,6 +114,7 @@ public class UserController {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String response(@FormParam("uname") String uname,
 			@FormParam("email") String email, @FormParam("password") String pass) {
+<<<<<<< HEAD
 
 		String serviceUrl = "http://1-dot-myswetwoproject.appspot.com/rest/RegistrationService";
 		String urlParameters = "uname=" + uname + "&email=" + email
@@ -122,11 +130,55 @@ public class UserController {
 			if (object.get("Status").equals("OK"))
 				return "Registered Successfully";
 
+=======
+		String serviceUrl = "http://fci-swe-apps.appspot.com/rest/RegistrationService";
+		try {
+			URL url = new URL(serviceUrl);
+			String urlParameters = "uname=" + uname + "&email=" + email
+					+ "&password=" + pass;
+			HttpURLConnection connection = (HttpURLConnection) url
+					.openConnection();
+			connection.setDoOutput(true);
+			connection.setDoInput(true);
+			connection.setInstanceFollowRedirects(false);
+			connection.setRequestMethod("POST");
+			connection.setConnectTimeout(60000);  //60 Seconds
+			connection.setReadTimeout(60000);  //60 Seconds
+			connection.setRequestProperty("Content-Type",
+					"application/x-www-form-urlencoded;charset=UTF-8");
+			OutputStreamWriter writer = new OutputStreamWriter(
+					connection.getOutputStream());
+			writer.write(urlParameters);
+			writer.flush();
+			String line, retJson = "";
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					connection.getInputStream()));
+
+			while ((line = reader.readLine()) != null) {
+				retJson += line;
+			}
+			writer.close();
+			reader.close();
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(retJson);
+			JSONObject object = (JSONObject) obj;
+			if (object.get("Status").equals("OK"))
+				return "Registered Successfully";
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+>>>>>>> 93d379e49e7e6d965ecc4a4c763696b8990162e4
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 93d379e49e7e6d965ecc4a4c763696b8990162e4
 		/*
 		 * UserEntity user = new UserEntity(uname, email, pass);
 		 * user.saveUser(); return uname;
@@ -150,6 +202,7 @@ public class UserController {
 	@Produces("text/html")
 	public Response home(@FormParam("uname") String uname,
 			@FormParam("password") String pass) {
+<<<<<<< HEAD
 
 		String urlParameters = "uname=" + uname + "&password=" + pass;
 
@@ -161,10 +214,43 @@ public class UserController {
 		Object obj;
 		try {
 			obj = parser.parse(retJson);
+=======
+		String serviceUrl = "http://fci-swe-apps.appspot.com/rest/LoginService";
+		try {
+			URL url = new URL(serviceUrl);
+			String urlParameters = "uname=" + uname + "&password=" + pass;
+			HttpURLConnection connection = (HttpURLConnection) url
+					.openConnection();
+			connection.setDoOutput(true);
+			connection.setDoInput(true);
+			connection.setInstanceFollowRedirects(false);
+			connection.setRequestMethod("POST");
+			connection.setConnectTimeout(60000);  //60 Seconds
+			connection.setReadTimeout(60000);  //60 Seconds
+			
+			connection.setRequestProperty("Content-Type",
+					"application/x-www-form-urlencoded;charset=UTF-8");
+			OutputStreamWriter writer = new OutputStreamWriter(
+					connection.getOutputStream());
+			writer.write(urlParameters);
+			writer.flush();
+			String line, retJson = "";
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					connection.getInputStream()));
+
+			while ((line = reader.readLine()) != null) {
+				retJson += line;
+			}
+			writer.close();
+			reader.close();
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(retJson);
+>>>>>>> 93d379e49e7e6d965ecc4a4c763696b8990162e4
 			JSONObject object = (JSONObject) obj;
 			if (object.get("Status").equals("Failed"))
 				return null;
 			Map<String, String> map = new HashMap<String, String>();
+<<<<<<< HEAD
 			User user = User.getUser(object.toJSONString());
 			map.put("name", user.getName());
 			map.put("email", user.getEmail());
@@ -265,17 +351,39 @@ System.out.println("responseSeeFriendRequsts");
 			JSONObject object = (JSONObject) obj;
 			if (object.get("Status").equals("OK"))
 				return Response.ok(new Viewable("/jsp/showFriends")).build();
+=======
+			UserEntity user = UserEntity.getUser(object.toJSONString());
+			map.put("name", user.getName());
+			map.put("email", user.getEmail());
+			return Response.ok(new Viewable("/jsp/home", map)).build();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+>>>>>>> 93d379e49e7e6d965ecc4a4c763696b8990162e4
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 93d379e49e7e6d965ecc4a4c763696b8990162e4
 		/*
 		 * UserEntity user = new UserEntity(uname, email, pass);
 		 * user.saveUser(); return uname;
 		 */
 		return null;
+<<<<<<< HEAD
 		//seeFriendRequsts
 	}
 
+=======
+
+	}
+
+
+>>>>>>> 93d379e49e7e6d965ecc4a4c763696b8990162e4
 }

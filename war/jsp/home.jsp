@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
+<<<<<<< HEAD
 <title>${it.name} Profile Page</title>
 </head>
 <body>
@@ -19,5 +20,15 @@
 <input type="submit" value="Add Friend" />
 <input type="text" name="email" />
 </form>
+=======
+<title>Insert title here</title>
+</head>
+<body>
+<p> Welcome b2a ya ${it.name} </p>
+<p> This is should be user home page </p>
+<p> Current implemented services "http://fci-swe-apps.appspot.com/rest/RegistrationService --- {requires: uname, email, password}" </p>
+<p> and "http://fci-swe-apps.appspot.com/rest/LoginService --- {requires: uname,  password}" </p>
+<p> you should implement sendFriendRequest service and addFriend service
+>>>>>>> 93d379e49e7e6d965ecc4a4c763696b8990162e4
 </body>
 </html>
