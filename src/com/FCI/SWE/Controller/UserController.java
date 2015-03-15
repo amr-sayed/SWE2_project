@@ -108,7 +108,7 @@ public class UserController {
 	public String response(@FormParam("uname") String uname,
 			@FormParam("email") String email, @FormParam("password") String pass) {
 
-		String serviceUrl = "http://localhost:8888/rest/RegistrationService";
+		String serviceUrl = "http://1-dot-myswetwoproject.appspot.com/rest/RegistrationService";
 		String urlParameters = "uname=" + uname + "&email=" + email
 				+ "&password=" + pass;
 		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
@@ -154,7 +154,7 @@ public class UserController {
 		String urlParameters = "uname=" + uname + "&password=" + pass;
 
 		String retJson = Connection.connect(
-				"http://localhost:8888/rest/LoginService", urlParameters,
+				"http://1-dot-myswetwoproject.appspot.com/rest/LoginService", urlParameters,
 				"POST", "application/x-www-form-urlencoded;charset=UTF-8");
 
 		JSONParser parser = new JSONParser();
@@ -188,7 +188,7 @@ public class UserController {
 	
 		String urlParameters = "email=" + email;
 		String retJson = Connection.connect(
-				"http://localhost:8888/rest/addFriendService", urlParameters,
+				"http://1-dot-myswetwoproject.appspot.com/rest/addFriendService", urlParameters,
 				"POST", "application/x-www-form-urlencoded;charset=UTF-8");
 		JSONParser parser = new JSONParser();
 		Object obj;
@@ -223,7 +223,7 @@ public class UserController {
 		String urlParameters = "fname=" + fname ;
 	 	
 		String retJson = Connection.connect(
-				"http://localhost:8888/rest/frindConfirmService", urlParameters,
+				"http://1-dot-myswetwoproject.appspot.com/rest/frindConfirmService", urlParameters,
 				"POST", "application/x-www-form-urlencoded;charset=UTF-8");
 		
 		JSONParser parser = new JSONParser();
@@ -252,7 +252,7 @@ public class UserController {
 	@POST
 	public Response responseSeeFriendRequsts( ) {
 System.out.println("responseSeeFriendRequsts");
-		String serviceUrl = "http://localhost:8888/rest/seeFriendRequsts";
+		String serviceUrl = "http://1-dot-myswetwoproject.appspot.com//rest/seeFriendRequsts";
 		String urlParameters = "";
 			//	"uname=" + uname + "&email=" + email+ "&password=" + pass;
 		String retJson = Connection.connect(serviceUrl, urlParameters, "POST",
